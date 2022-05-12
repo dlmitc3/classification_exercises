@@ -1,8 +1,18 @@
-import os
-import env
 import pandas as pd
+import numpy as np
+import os
+from env import host, user, password
 
-database_url_base = f'mysql+pymysql://{env.user}:{env.password}@{env.host}/'
+###################### Acquire Titanic Data ######################
+
+def get_connection(db, user=user, host=host, password=password):
+    '''
+    This function uses my info from my env file to
+    create a connection url to access the Codeup db.
+    It takes in a string name of a database as an argument.
+    '''
+    return f'mysql+pymysql://{user}:{password}@{host}/{db}'
+
 
 # 1) Make a function named get_titanic_data that returns the titanic data from the 
 # codeup data science database as a pandas data frame. Obtain your data from the 
