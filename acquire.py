@@ -32,27 +32,19 @@ def new_titanic_data():
 # Codeup Data Science Database.
 
 def get_titanic_data():
-    '''
-    This function reads in titanic data from Codeup database, writes data to
-    a csv file if a local file does not exist, and returns a df.
-    '''
-    filename = 'titanic_df.csv'
+    filename = "titanic.csv"
 
-    if os.path.isfile('titanic_df.csv'):
-        
-        # If csv file exists, read in data from csv file.
-        df = pd.read_csv('titanic_df.csv', index_col=0)
-        
+    if os.path.isfile(filename):
+        return pd.read_csv(filename)
     else:
-        
-        # Read fresh data from db into a DataFrame.
-        df = new_titanic_data()
-        
-        # Write DataFrame to a csv file.
-        df.('titanic_df.csv')
-        
-    return df
+        # read the SQL query into a dataframe
+        df = pd.read_sql('SELECT * FROM passengers', get_connection('titanic_db'))
 
+        # Write that dataframe to disk for later. Called "caching" the data for later.
+        df.to_file(filename)
+
+        # Return the dataframe to the calling code
+        return df  
 
 # 2)Make a function named get_iris_data that returns the data from the iris_db on 
 # the codeup data science database as a pandas data frame. The returned data frame 
