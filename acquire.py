@@ -1,5 +1,6 @@
 import os
 import env
+import pandas as pd
 
 database_url_base = f'mysql+pymysql://{env.user}:{env.password}@{env.host}/'
 
