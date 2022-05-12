@@ -31,20 +31,17 @@ def new_titanic_data():
 # codeup data science database as a pandas data frame. Obtain your data from the 
 # Codeup Data Science Database.
 
-def get_titanic_data():
-    filename = "titanic.csv"
+database_url_base = f'mysql+pymysql://{env.user}:{env.password}@{env.host}/'
 
-    if os.path.isfile(filename):
-        return pd.read_csv(filename)
-    else:
-        # read the SQL query into a dataframe
-        df = pd.read_sql('SELECT * FROM passengers', get_connection('titanic_db'))
-
-        # Write that dataframe to disk for later. Called "caching" the data for later.
-        df.to_file(filename)
-
-        # Return the dataframe to the calling code
-        return df  
+def get_titanic_data(use_cache=True):
+    if os.path.exists('titanic.csv') and use_cache:
+        print('Using cached csv')
+        return pd.read_csv('titanic.csv')
+    print('Acquiring data from SQL database')
+    query = 'SELECT * FROM passengers'
+    df = pd.read_sql(query, database_url_base + 'titanic_db')
+    df.to_csv('titanic.csv', index=False)
+    return df
 
 # 2)Make a function named get_iris_data that returns the data from the iris_db on 
 # the codeup data science database as a pandas data frame. The returned data frame 
