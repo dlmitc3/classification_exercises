@@ -59,11 +59,12 @@ def new_iris_data():
     sql_query = """
                 SELECT 
                     species_id,
-                    species_name,
+                    measurement_id,
                     sepal_length,
                     sepal_width,
                     petal_length,
-                    petal_width
+                    petal_width,
+                    species_name
                 FROM measurements
                 JOIN species USING(species_id)
                 """
