@@ -36,6 +36,8 @@ def get_titanic_data():
     This function reads in titanic data from Codeup database, writes data to
     a csv file if a local file does not exist, and returns a df.
     '''
+    filename = 'titanic_df.csv'
+
     if os.path.isfile('titanic_df.csv'):
         
         # If csv file exists, read in data from csv file.
@@ -47,7 +49,7 @@ def get_titanic_data():
         df = new_titanic_data()
         
         # Write DataFrame to a csv file.
-        df.to_csv('titanic_df.csv')
+        df.('titanic_df.csv')
         
     return df
 
