@@ -30,7 +30,7 @@ def new_titanic_data():
 
 
 
-def get_titanic_data():
+def get_titanic_data(df):
     '''
     This function reads in titanic data from Codeup database, writes data to
     a csv file if a local file does not exist, and returns a df.
