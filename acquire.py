@@ -3,7 +3,7 @@ import numpy as np
 import os
 from env import host, user, password
 
-###################### Acquire Titanic Data ######################
+
 
 def get_connection(db, user=user, host=host, password=password):
     '''
@@ -13,7 +13,7 @@ def get_connection(db, user=user, host=host, password=password):
     '''
     return f'mysql+pymysql://{user}:{password}@{host}/{db}'
     
-    
+ ###################### Acquire Titanic Data ######################   
     
 def new_titanic_data():
     '''
@@ -30,7 +30,7 @@ def new_titanic_data():
 
 
 
-def get_titanic_data(df):
+def get_titanic_data():
     '''
     This function reads in titanic data from Codeup database, writes data to
     a csv file if a local file does not exist, and returns a df.
@@ -94,6 +94,10 @@ def get_iris_data():
         df.to_csv('iris_df.csv')
         
     return df
+
+
+
+###################### Acquire Telco Data ######################
 
 def new_telco_data():
     '''
