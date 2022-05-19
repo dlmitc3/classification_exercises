@@ -139,7 +139,7 @@ def prep_titanic_data(df):
 
     return train, validate, test
 
-
+    return data
 
 # ------------------- TELCO DATA -------------------
 
