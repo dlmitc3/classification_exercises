@@ -137,8 +137,6 @@ def prep_titanic_data(df):
     
     train, validate, test = impute_mean_age(train, validate, test)
 
-    return train, validate, test
-
     return data
 
 # ------------------- TELCO DATA -------------------
